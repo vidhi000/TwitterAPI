@@ -8,9 +8,9 @@ let valTag = /^[^ !@#$%^&*(),.?":{}|<>]{2,20}$/;
 
 export const hashtagSearch = async (ctx) => {
   let reqTAG = ctx.request.URL.pathname.split("/");
-  console.log(reqTAG);
+  // console.log(reqTAG);
   const requestTAG = reqTAG[2];
-  console.log(requestTAG);
+  // console.log(requestTAG);
 
   if (!requestTAG.match(valTag)) {
     const err = {
@@ -32,7 +32,7 @@ export const hashtagSearch = async (ctx) => {
     );
 
     const data = ans.data;
-    console.log(data);
+    // console.log(data);
 
     if (data.meta.result_count == 0) {
       ctx.body = {
@@ -50,7 +50,7 @@ export const hashtagSearch = async (ctx) => {
       let URL = "";
       if (data.data[i].attachments) {
         media_URL = data.data[i].attachments.media_keys[i];
-        console.log(media_URL);
+        // console.log(media_URL);
         data.includes.media.forEach((ele) => {
           if (ele.url && ele.media_key === media_URL) {
             URL = ele.url.split(",");
